@@ -1,32 +1,24 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import SquareAPI from './API/';
+import Map from './component/Map'
 
 class App extends Component {
   componentDidMount(){
     SquareAPI.search({
       ll: "33.42,-111.83",
       query: 'coffee'
-    }).then(results => console.log(results))
+    }).then(results => console.log(results)),
+    Map.renderMap({
+      center: {lat: 33.415076, lng: -111.831389},
+      zoom: 16,
+      styles: styles
+    }) //make map match square
   }
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Map />
       </div>
     );
   }
