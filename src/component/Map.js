@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 
 class Map extends Component{
 
-
+    componentDidMount() {
+        this.renderMap()
+    }
 
     renderMap = () =>{
         loadMapAPI("https://maps.googleapis.com/maps/api/js?key=AIzaSyCnPeVOPbLkPtwjEbH9MKDppTkoFSVmKdA&callback=initMap")
@@ -11,7 +13,11 @@ class Map extends Component{
 
     initMap = () => {
         const styles = [{"featureType": "all", "elementType": "all", "stylers": [{"hue": "#0000b0"},{"invert_lightness": "true"},{"saturation": -30}]}]
-        const map = new window.google.maps.Map(document.getElementById('map'))
+        const map = new window.google.maps.Map(document.getElementById('map'), {
+          center: {lat: 33.415076, lng: -111.831389},
+          zoom: 16,
+          styles: styles
+        })
     }
 
     render(){

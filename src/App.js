@@ -8,13 +8,9 @@ class App extends Component {
     SquareAPI.search({
       ll: "33.42,-111.83",
       query: 'coffee'
-    }).then(results => console.log(results)),
-    Map.renderMap({
-      center: {lat: 33.415076, lng: -111.831389},
-      zoom: 16,
-      styles: styles
-    }) //make map match square
+    }).then(results => console.log(results))
   }
+  
   render() {
     return (
       <div className="App">
