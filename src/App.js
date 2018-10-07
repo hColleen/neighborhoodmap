@@ -21,21 +21,24 @@ class App extends Component {
       const { venues } = results.response;
       const { markers } = venues.map(venue => {
         return{
-          lat: venue.location.lat,
-          lng: venue.location.lng,
-          isOpen: false,
-          isVisible: true
-        }
+            lat: venue.location.lat,
+            lng: venue.location.lng,
+            title: venue.name,
+            isOpen: false,
+            isVisible: true
+            }
+        })
+        this.setState({ venues, markers })
+        console.log(results)
+      }).catch(error => {
+        alert('FourSquare API Failed. Please check connection and try again')
       })
-      this.setState({ venues, markers })
-      console.log(results)
- })
-    }
+ }
   
   render() {
     return (
       <div className="App">
-        <Map />
+        <Map {...this.state } />
       </div>
     );
   }

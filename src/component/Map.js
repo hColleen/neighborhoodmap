@@ -18,13 +18,12 @@ class Map extends Component{
             zoom: 16,
             styles: styles
             })
-
-            let marker = new window.google.maps.Marker({})
+            const marker = new window.google.maps.Marker
         }
 
     render(){
         return(
-            <div id = "map"></div>
+            <div id = "map" role = "application" aria-label = "map" tabIndex = "-1"></div>
         )
     }
 }
